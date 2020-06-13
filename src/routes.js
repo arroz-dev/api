@@ -10,7 +10,7 @@ routes.get('/', (req, res) => {
 });
 
 routes.post('/user', UserController.store);
-routes.post('/user', UserController.auth);
+routes.post('/login', UserController.auth);
 
 routes.use(authMid);
 
