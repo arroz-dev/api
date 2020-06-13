@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const Youch = require('youch');
 require('express-async-errors');
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -20,8 +21,9 @@ app.use(routes);
 
 app.use(async (error, req, res) => {
   if (error) {
+    const errors = await new Youch(error, req).toJSON();
     logger.error(error);
-    return res.status(500).json({ error: 'Houve um erro no servidor' });
+    return res.status(500).json({ errors });
   }
 });
 
