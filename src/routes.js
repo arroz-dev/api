@@ -10,10 +10,11 @@ routes.get('/', (req, res) => {
 });
 
 routes.post('/user', UserController.store);
-routes.post('/user', UserController.auth);
+routes.post('/login', UserController.auth);
 
 routes.use(authMid);
 
+routes.get('/user/:id', UserController.index);
 routes.post('/mail', MailController.store);
 
 module.exports = routes;
