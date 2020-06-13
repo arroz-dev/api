@@ -34,5 +34,19 @@ MAIL_PORT=
 MAIL_USER=
 MAIL_PASS=
 MONGO_URL=
-JWT_KEY
+JWT_KEY=
 ```
+
+### ARCH
+
+<img src="./.github/assets/arch.png">
+
+### Services
+
+- Digital Ocean Cloud
+
+- Github
+
+- Buddy CI CD
+
+- MongoDB - Mongo Atlas Database NoSQL

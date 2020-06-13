@@ -19,8 +19,10 @@ app.use(express.json());
 app.use(routes);
 
 app.use(async (error, req, res) => {
-  logger.error(error);
-  return res.status(500).json({ error: 'Houve um erro no servidor' });
+  if (error) {
+    logger.error(error);
+    return res.status(500).json({ error: 'Houve um erro no servidor' });
+  }
 });
 
 app.listen(process.env.PORT || 3000, () =>
