@@ -37,7 +37,7 @@ class UserController {
     });
 
     if (!user) {
-      return res.status(401).json({ msg: 'Usuario não encontrado' });
+      return res.status(400).json({ msg: 'Usuario não encontrado' });
     }
 
     if (!(await bcrypt.compare(password, user.password))) {
