@@ -36,6 +36,10 @@ class UserController {
       number,
     });
 
+    if (!user) {
+      return res.status(401).json({ msg: 'Usuario não encontrado' });
+    }
+
     if (!(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({
         error: 'Credenciais invalidas',
