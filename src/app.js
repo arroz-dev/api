@@ -13,7 +13,6 @@ const routes = require('./routes');
 const app = express();
 
 app.use(helmet());
-
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
