@@ -15,6 +15,8 @@ routes.post('/login', UserController.auth);
 routes.use(authMid);
 
 routes.get('/user/:id', UserController.index);
+routes.get('/users', UserController.show);
+
 routes.post('/mail', MailController.store);
 
 module.exports = routes;
