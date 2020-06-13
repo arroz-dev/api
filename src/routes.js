@@ -6,7 +6,7 @@ const UserController = require('./app/controllers/UserController');
 const authMid = require('./app/middlewares/auth');
 
 routes.get('/', (req, res) => {
-  res.json({ msg: 'Mail Service OK' });
+  res.json({ msg: 'API ON' });
 });
 
 routes.post('/user', UserController.store);
