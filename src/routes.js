@@ -3,6 +3,7 @@ const multer = require('multer');
 const multerConfig = require('./config/multer');
 const MailController = require('./app/controllers/MailController');
 const UserController = require('./app/controllers/UserController');
+const TripController = require('./app/controllers/TripController');
 const authMid = require('./app/middlewares/auth');
 
 routes.get('/', (req, res) => {
@@ -18,5 +19,9 @@ routes.get('/user/:id', UserController.index);
 routes.get('/users', UserController.show);
 
 routes.post('/mail', MailController.store);
+
+routes.post('/trip', TripController.store);
+routes.get('/trip', TripController.index);
+routes.get('/trip/:id', TripController.show);
 
 module.exports = routes;
