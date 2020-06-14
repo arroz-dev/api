@@ -25,20 +25,20 @@ class UserController {
   async store(req, res) {
     const user = await userModel.create(req.body);
 
-    const sms = await axios({
-      url: 'https://api2.totalvoice.com.br/sms',
-      method: 'post',
-      headers: {
-        'Access-Token': process.env.TOTALVOICE_API_KEY,
-      },
-      data: {
-        numero_destino: user.number,
-        mensagem:
-          'Inscreva-se no canal Rodrigo Branas e fique por dentro de todas as novidades do mundo da programação!',
-      },
-    });
+    // const sms = await axios({
+    //   url: 'https://api2.totalvoice.com.br/sms',
+    //   method: 'post',
+    //   headers: {
+    //     'Access-Token': process.env.TOTALVOICE_API_KEY,
+    //   },
+    //   data: {
+    //     numero_destino: user.number,
+    //     mensagem:
+    //       'Inscreva-se no canal Rodrigo Branas e fique por dentro de todas as novidades do mundo da programação!',
+    //   },
+    // });
 
-    logger.info(sms.data);
+    // logger.info(sms.data);
 
     const token = createJwt(user);
 
@@ -73,6 +73,14 @@ class UserController {
     const { userId: id } = req;
     const user = await userModel.findById({ id });
     return res.status(200).json({ user });
+  }
+
+  async update(req, res) {
+    const { userId: id } = req;
+    const user = await userModel.findByIdAndUpdate({ id }, req.body, {
+      new: true,
+    });
+    return res.status(201).json({ user });
   }
 }
 
