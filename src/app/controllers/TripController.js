@@ -7,7 +7,8 @@ class TripController {
   }
 
   async show(req, res) {
-    const trips = await tripModel.find();
+    const { userId } = req;
+    const trips = await tripModel.find({ userId });
     return res.stauts(200).json(trips);
   }
 
