@@ -23,6 +23,12 @@ const createJwt = (user) => {
 
 class UserController {
   async store(req, res) {
+    const { number } = req.body;
+
+    if (await userModel.find({ number })) {
+      return res.status(400).json({ error: 'Usuario ja existe' });
+    }
+
     const user = await userModel.create(req.body);
 
     // const sms = await axios({
