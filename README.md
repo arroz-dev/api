@@ -24,6 +24,12 @@ Run ESlint
 npm run lint
 ```
 
+Run with Docker and docker-compose
+
+```
+docker-compose up
+```
+
 ### ENV
 
 ```
