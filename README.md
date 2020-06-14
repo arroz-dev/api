@@ -24,6 +24,22 @@ Run ESlint
 npm run lint
 ```
 
+Run with Docker and docker-compose
+
+```
+docker-compose up
+```
+
+### Routes
+
+
+| HTTP VERB | Endpoint | Status | Response            |
+| --------- | -------- | ------ | ------------------- |
+| POST      | /user    | 201    | JWT Token           |
+| GET       | /user    | 400    | User alrdedy exists |
+| PUT       | /user    | 201    | New user            |
+
+
 ### ENV
 
 ```

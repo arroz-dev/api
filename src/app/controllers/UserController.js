@@ -61,13 +61,13 @@ class UserController {
 
   async index(req, res) {
     const { userId: id } = req;
-    const user = await userModel.findById({ id });
+    const user = await userModel.findById(id);
     return res.status(200).json({ user });
   }
 
   async update(req, res) {
     const { userId: id } = req;
-    const user = await userModel.findByIdAndUpdate({ id }, req.body, {
+    const user = await userModel.findByIdAndUpdate(id, req.body, {
       new: true,
     });
     return res.status(201).json({ user });
