@@ -22,11 +22,9 @@ class UserController {
   async store(req, res) {
     const user = await userModel.create(req.body);
 
-    user.password = undefined;
+    const token = createJwt(user);
 
-    user.token = createJwt(user);
-
-    return res.status(201).json(user);
+    return res.status(201).json(token);
   }
 
   async auth(req, res) {
