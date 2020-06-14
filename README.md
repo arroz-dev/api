@@ -35,7 +35,7 @@ docker-compose up
 | HTTP VERB | Endpoint | Status | Response            |   
 |-----------|----------|--------|---------------------|
 | POST      | /user    | 201    | JWT Token           |   
-| GET       | /user    | 400    | User alrdedy exists |   
+| GET       | /user    | 400    | User already exists |   
 | PUT       | /user    | 201    | New user            |   
 
 ### ENV
