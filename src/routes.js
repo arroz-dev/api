@@ -23,4 +23,6 @@ routes.post('/trip', TripController.store);
 routes.get('/trip', TripController.index);
 routes.get('/trip/:id', TripController.show);
 
+routes.put('/user', UserController.update);
+
 module.exports = routes;
