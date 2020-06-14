@@ -22,11 +22,9 @@ class UserController {
   async store(req, res) {
     const user = await userModel.create(req.body);
 
-    user.password = undefined;
+    const token = createJwt(user);
 
-    user.token = createJwt(user);
-
-    return res.status(201).json(user);
+    return res.status(201).json(token);
   }
 
   async auth(req, res) {
@@ -54,9 +52,14 @@ class UserController {
   }
 
   async index(req, res) {
-    const id = req.params.id;
+    const { id } = req.params;
     const user = await userModel.findById({ id });
     return res.status(200).json({ user });
+  }
+
+  async show(req, res) {
+    const users = await userModel.find();
+    return res.status(200).json(users);
   }
 }
 

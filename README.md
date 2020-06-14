@@ -24,7 +24,6 @@ Run ESlint
 npm run lint
 ```
 
-
 ### ENV
 
 ```
@@ -50,3 +49,5 @@ JWT_KEY=
 - Buddy CI CD
 
 - MongoDB - Mongo Atlas Database NoSQL
+
+- Nginx - Proxy reverso
