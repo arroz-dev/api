@@ -26,7 +26,8 @@ module.exports = async (req, res, next) => {
       token,
       process.env.JWT_KEY
     );
-    logger.info(tokenDecoded.id);
+
+    req.userId = tokenDecoded.id;
     return next();
   } catch (e) {
     logger.error(e);

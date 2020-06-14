@@ -15,8 +15,7 @@ routes.post('/login', UserController.auth);
 
 routes.use(authMid);
 
-routes.get('/user/:id', UserController.index);
-routes.get('/users', UserController.show);
+routes.get('/user', UserController.index);
 
 routes.post('/mail', MailController.store);
 
