@@ -22,7 +22,9 @@ class UserController {
   async store(req, res) {
     const { number } = req.body;
 
-    if (await userModel.find({ number })) {
+    const oldUser = await userModel.findOne({ number });
+
+    if (oldUser) {
       return res.status(400).json({ error: 'Usuario ja existe' });
     }
 
