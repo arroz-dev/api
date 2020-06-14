@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
+const logger = require('../../helper/logger');
 const userModel = require('../models/user');
 
 const createJwt = (user) => {
@@ -21,6 +23,21 @@ const createJwt = (user) => {
 class UserController {
   async store(req, res) {
     const user = await userModel.create(req.body);
+
+    const sms = await axios({
+      url: 'https://api2.totalvoice.com.br/sms',
+      method: 'post',
+      headers: {
+        'Access-Token': process.env.TOTALVOICE_API_KEY,
+      },
+      data: {
+        numero_destino: user.number,
+        mensagem:
+          'Inscreva-se no canal Rodrigo Branas e fique por dentro de todas as novidades do mundo da programação!',
+      },
+    });
+
+    logger.info(sms.data);
 
     const token = createJwt(user);
 
